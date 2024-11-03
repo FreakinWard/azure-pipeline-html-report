@@ -24,11 +24,11 @@ This extension patches the original [HTML Viewer by Jakub Rumpca](https://market
 
 Before fix:
 
-![githubIssue8.png](docs/githubIssue8.png)
+![githubIssue8.png](https://github.com/FreakinWard/azure-pipeline-html-report/blob/main/docs/githubIssue8.png?raw=true)
 
 After fix:
 
-![githubIssue8-fixed.png](docs/githubIssue8-fixed.png)
+![githubIssue8-fixed.png](https://github.com/FreakinWard/azure-pipeline-html-report/blob/main/docs/githubIssue8-fixed.png?raw=true)
 
 ```yaml
 
