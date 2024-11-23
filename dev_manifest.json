@@ -1,5 +1,7 @@
 {
     "manifestVersion": 1,
     "id": "extension",
-    "publisher": "AwardedSolutions"
+    "publisher": "AwardedSolutions",
+    "public": false,
+    "version": "1.0.18"
 }
