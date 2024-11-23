@@ -13,7 +13,7 @@
   "version": {
     "Major": "1",
     "Minor": "0",
-    "Patch": "18"
+    "Patch": "20"
   },
   "minimumAgentVersion": "1.95.0",
   "instanceNameFormat": "Publish Html Report",
@@ -36,7 +36,7 @@
     }
   ],
   "execution": {
-    "Node20": {
+    "Node10": {
       "target": "index.js",
       "argumentFormat": ""
     }
