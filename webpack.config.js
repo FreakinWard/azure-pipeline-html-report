@@ -24,16 +24,33 @@ module.exports = {
             },
             {
                 test: /\.scss$/,
-                use: ["style-loader", "css-loader", "azure-devops-ui/buildScripts/css-variables-loader", "sass-loader"]
+                use: [
+                    "style-loader", 
+                    "css-loader", 
+                    "azure-devops-ui/buildScripts/css-variables-loader", 
+                    {
+                        loader: 'sass-loader',
+                        options: {
+                            implementation: require('sass'),
+                            sassOptions: {
+                                includePaths: ['node_modules']
+                            }
+                        }
+                    }
+                ]
             },
             {
                 test: /\.css$/,
                 use: ["style-loader", "css-loader"],
             },
             {
-                test: /\.woff$/,
+                test: /\.woff2?$/,
                 use: [{
-                    loader: 'base64-inline-loader'
+                    loader: 'file-loader',
+                    options: {
+                        name: '[name].[ext]',
+                        outputPath: 'fonts/'
+                    }
                 }]
             },
             {
@@ -43,9 +60,14 @@ module.exports = {
         ]
     },
     plugins: [
-        new CopyWebpackPlugin([
-            { from: "*.html", context: "src/" },
-        ]),
+        new CopyWebpackPlugin({
+            patterns: [
+                {
+                    from: "*.html",
+                    context: "src/"
+                }
+            ]
+        }),
         new webpack.SourceMapDevToolPlugin({})
     ]
 };
