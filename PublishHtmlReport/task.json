@@ -3,8 +3,8 @@
   "name": "PublishHtmlReport",
   "friendlyName": "Publish Html Report",
   "description": "Publish Html Report",
-  "author": "",
-  "helpMarkDown": "Replace with markdown to show in help",
+  "author": "AwardedSolutions",
+  "helpMarkDown": "Pipelines task that publishes HTML report files",
   "category": "Utility",
   "visibility": [
     "Build"
@@ -12,10 +12,10 @@
   "demands": [],
   "version": {
     "Major": "1",
-    "Minor": "0",
-    "Patch": "14"
+    "Minor": "3",
+    "Patch": "0"
   },
-  "minimumAgentVersion": "1.95.0",
+  "minimumAgentVersion": "2.144.0",
   "instanceNameFormat": "Publish Html Report",
   "inputs": [
     {
@@ -24,19 +24,35 @@
       "label": "Report tab name",
       "defaultValue": "HTML-Report",
       "required": false,
-      "helpMarkDown": "Name of the tab displayed in the report"
+      "helpMarkDown": "Name of the tab displayed in the report window"
     },
     {
       "name": "reportDir",
       "type": "filePath",
-      "label": "HTML file Directory",
+      "label": "HTML file or directory path",
       "defaultValue": "",
       "required": true,
-      "helpMarkDown": "HTML file directory where PublishHtmlReport is run."
+      "helpMarkDown": "The HTML file or directory path for the file(s) to be published"
+    },
+    {
+      "name": "useFilenameTabs",
+      "type": "boolean",
+      "label": "Use filenames as tab names",
+      "defaultValue": "true",
+      "required": false,
+      "helpMarkDown": "When using reports from a directory, use the filename as the tab header for each file."
     }
   ],
   "execution": {
     "Node10": {
+      "target": "index.js",
+      "argumentFormat": ""
+    },
+    "Node16": {
+      "target": "index.js",
+      "argumentFormat": ""
+    },
+    "Node20_1": {
       "target": "index.js",
       "argumentFormat": ""
     }
