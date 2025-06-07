@@ -3,6 +3,23 @@
   "version": "1.0.17",
   "private": true,
   "author": "Jakub Rumpca",
+  "engines": {
+    "node": ">=20",
+    "npm": ">=9"
+  },
+  "scripts": {
+    "clean": "rimraf ./dist",
+    "build:cidev": "npm run clean && webpack --mode development",
+    "build": "npm run clean && webpack --mode development",
+    "postbuild": "npm run extension:package",
+    "postinstall": "cd PublishHtmlReport && npm install",
+    "test": "echo No test available",
+    "prune": "npm prune --production --ignore-scripts",
+    "extension:package": "tfx extension create --manifest-globs azure-devops-extension.json --overrides-file dev_manifest.json",
+    "extension:publish": "tfx extension publish --manifest-globs azure-devops-extension.json src/**/*.json",
+    "extension:unpublish": "tfx extension unpublish --manifest-globs azure-devops-extension.json src/**/*.json",
+    "extension:remove": "tfx extension remove --manifest-globs azure-devops-extension.json src/**/*.json"
+  },
   "dependencies": {
     "@material-ui/core": "^4.10.1",
     "@material-ui/icons": "^4.9.1",
@@ -16,10 +33,6 @@
     "react": "^16.8.1",
     "react-dom": "^16.8.1",
     "react-inspector": "^6.0.2"
-  },
-  "engines": {
-    "node": ">=20",
-    "npm": ">=9"
   },
   "devDependencies": {
     "@types/node": "^22.10.5",
@@ -41,19 +54,6 @@
     "webpack": "^5.97.1",
     "webpack-cli": "^5.1.4",
     "webpack-dev-server": "^5.2.0"
-  },
-  "scripts": {
-    "clean": "rimraf ./dist",
-    "build:cidev": "npm run clean && webpack --mode development",
-    "build": "npm run clean && webpack --mode development",
-    "postbuild": "npm run extension:package",
-    "postinstall": "cd PublishHtmlReport && npm install",
-    "test": "echo No test available",
-    "prune": "npm prune --production --ignore-scripts",
-    "extension:package": "tfx extension create --manifest-globs azure-devops-extension.json --overrides-file dev_manifest.json",
-    "extension:publish": "tfx extension publish --manifest-globs azure-devops-extension.json src/**/*.json",
-    "extension:unpublish": "tfx extension unpublish --manifest-globs azure-devops-extension.json src/**/*.json",
-    "extension:remove": "tfx extension remove --manifest-globs azure-devops-extension.json src/**/*.json"
   },
   "eslintConfig": {
     "extends": "react-app"
